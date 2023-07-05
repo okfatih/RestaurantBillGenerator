@@ -3,14 +3,18 @@ import java.util.Scanner;
 public class BillGenerator {
 
     public static void main(String[] args) {
+
         start();
     }
 
     public static void start() {
+        DishService dishService = new DishService();
+        dishService.fillDishList();
+        getSelectionMenu(dishService);
 
     }
 
-    public static void getSelectionMenu() {
+    public static void getSelectionMenu(DishService dishService) {
         Scanner inp = new Scanner(System.in);
 
         int select = -1;
@@ -30,6 +34,7 @@ public class BillGenerator {
 
             switch (select) {
                 case 1:
+                    dishService.showDishMenu();
                     break;
                 case 2:
                     break;
