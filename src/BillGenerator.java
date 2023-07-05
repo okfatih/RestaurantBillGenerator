@@ -8,13 +8,14 @@ public class BillGenerator {
     }
 
     public static void start() {
+        OrderService orderService = new OrderService();
         DishService dishService = new DishService();
         dishService.fillDishList();
-        getSelectionMenu(dishService);
+        getSelectionMenu(dishService, orderService);
 
     }
 
-    public static void getSelectionMenu(DishService dishService) {
+    public static void getSelectionMenu(DishService dishService, OrderService orderService) {
         Scanner inp = new Scanner(System.in);
 
         int select = -1;
@@ -37,6 +38,7 @@ public class BillGenerator {
                     dishService.showDishMenu();
                     break;
                 case 2:
+                    orderService.createOrder(dishService);
                     break;
                 case 3:
                     break;
