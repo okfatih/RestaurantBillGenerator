@@ -25,10 +25,10 @@ public class BillGenerator {
             System.out.println("------------------------------------------------");
             System.out.println(" *** Lezzet Restaurant Siparis *** ");
             System.out.println("1- Menu");
-            System.out.println("2- Siparis Girme");
-            System.out.println("3-Siparis Iptal Etme");
-            System.out.println("4-Hesap olusturma");
-            System.out.println("0-Exit");
+            System.out.println("2-  Siparis Girme");
+            System.out.println("3- Siparis Iptal Etme");
+            System.out.println("4- Hesap olusturma");
+            System.out.println("0- Exit");
             System.out.println("Seciminiz: ");
             select = inp.nextInt();
             System.out.println("------------------------------------------------");
@@ -41,8 +41,10 @@ public class BillGenerator {
                     orderService.createOrder(dishService);
                     break;
                 case 3:
+                    orderService.deleteOrder();
                     break;
                 case 4:
+                    orderService.printBill();
                     break;
                 case 0:
                     break;

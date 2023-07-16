@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
+//Dish classsı sadece yemek objesi oluşturmak için kullanacağım bir classken DischService classı yemeklerle ilgili işlemleri yapmak için oluştruduğum class
 public class DishService {
 
     // Yemekleri tutacağımız listeyi create edelim
@@ -43,9 +44,9 @@ public class DishService {
     public void showDishMenu() {
 
         System.out.println("             LEZZETLERIMIZ              ");
-        System.out.printf("%-3s   %-20s   %-5s Lira\n", "Kod", "Adi", "Fiyat");
+        System.out.printf("%-3s   %-20s   %-5s \n", "Kod", "Adi", "Fiyat");
 
-        System.out.printf("%-3s   %-20s   %-5s Lira\n", "---", "---", "-----");
+        System.out.printf("%-3s   %-20s   %-5s \n", "---", "---", "-----");
 
         for (Dish dish : this.dishList) {
 

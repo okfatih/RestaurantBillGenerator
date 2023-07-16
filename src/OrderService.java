@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 //Siparişlerle ilgili işlemlerimizi yapmak için açtık
 public class OrderService {
+    Scanner inp = new Scanner(System.in);
 
     List<Order> orderList = new ArrayList<>();
 
@@ -13,7 +14,7 @@ public class OrderService {
 
         while (dishCode != 0) {
             System.out.println("Lutfen urun kodunu giriniz: ((For Exit: 0)) ");
-            Scanner inp = new Scanner(System.in);
+
             dishCode = inp.nextInt(); // Girilen code ile kastedilen ürünü bulmamız lazım
             Dish dish = dishService.findDishByCode(dishCode);
             if (dish.getCode() > 0) {
@@ -33,6 +34,46 @@ public class OrderService {
 
         }
 
+    }
+
+    public void deleteOrder() {
+        boolean isValid = true;
+        if (orderList.isEmpty()) {
+            System.out.println("Siparisiniz bulunmamaktadir!");
+        } else {
+            System.out.println("Iptal etmek istediginiz siparisin kodunu giriniz.");
+            int code = inp.nextInt();
+            for (Order order : this.orderList) {
+                if (order.orderCode == code) {
+                    this.orderList.remove(order);
+                    System.out.println("Siparisiniz iptal edildi " + order.dish.toString());
+                    isValid = true;
+                    break;
+                } else {
+                    isValid = false;
+
+                }
+            }
+            if (!isValid) {
+                System.out.println("Siparis kodu gecersiz!");
+            }
+
+        }
+
+    }
+
+    public void printBill() {
+        double totalPrice = 0.0;
+        System.out.println("   Lezzet Fisiniz       ");
+        for (Order order : this.orderList) {
+            System.out.printf("Lezzet kodu:%-5s  Adi:%-20s  Adet:%-5s  Siparis Tutari:%-5s Lira\n",
+                    order.dish.getCode(), order.dish.getName(), order.numberOfDish, order.orderPrice);
+            totalPrice += order.orderPrice;
+
+        }
+        System.out.println("Toplam tutar: " + totalPrice);
+        System.out.println("Afiyet olsun iyi gunler");
+        this.orderList = new ArrayList<>();
     }
 
 }
